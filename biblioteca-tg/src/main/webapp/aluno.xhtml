@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/_template.xhtml">
+	<ui:define name="corpo">
+		<p:tabView>
+			<p:tab title="#{alunoController.tituloAba1}">
+				<h:form>
+					<h:messages styleClass="erros">
+						<h2>
+							<h:outputText value="Novo Aluno" rendered="#{empty alunoController.aluno.id}" />
+							<h:outputText value="Editar Aluno" rendered="#{not empty alunoController.aluno.id}" />
+						</h2>
+						<fieldset>
+							<legend>Dados do Aluno</legend>
+
+							<h:inputHidden value="#{alunoController.aluno.id}" />
+
+							<h:outputLabel value="Nome: " for="nome" />
+							<h:inputText id="nome" value="#{alunoController.aluno.nome}">
+								<f:validator validatorId="comecaComMaiuscula" />
+							</h:inputText>
+
+							<h:outputLabel value="Registro: " for="registro" />
+							<h:inputText id="registro" value="#{alunoController.aluno.registro}" />
+
+							<h:commandButton value="Gravar" action="#{alunoController.grava}" />
+
+							<h:commandButton value="Cancela Edicao" action="#{alunoController.cancela}" immediate="true" />
+
+						</fieldset>
+					</h:messages>
+				</h:form>
+			</p:tab>
+			<p:tab title="Listagem">
+				<h:form>
+					<h2>Listagem de Alunos</h2>
+
+					<h:dataTable value="#{alunoController.alunos}" var="aluno" styleClass="dados" rowClasses="impar,par">
+
+						<h:column>
+							<f:facet name="header">Nome</f:facet>
+							#{aluno.nome}
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Registro</f:facet>
+							#{aluno.registro}
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Acoes</f:facet>
+							<h:commandLink action="#{alunoController.remove(aluno)}" value="Remover">
+								<f:ajax execute="@form" />
+							</h:commandLink>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Acoes</f:facet>
+							<h:commandLink value="Alterar">
+								<f:setPropertyActionListener value="#{aluno}" target="#{alunoController.aluno}">
+								</f:setPropertyActionListener>
+							</h:commandLink>
+						</h:column>
+
+					</h:dataTable>
+				</h:form>
+			</p:tab>
+		</p:tabView>
+
+	</ui:define>
+</ui:composition>
+</html>

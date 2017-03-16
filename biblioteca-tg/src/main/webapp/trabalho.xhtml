@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/_template.xhtml">
+	<ui:define name="corpo">
+		<p:tabView>
+			<p:tab title="#{trabalhoController.tituloAba1}">
+				<h:form>
+					<h:messages styleClass="erros">
+						<h2>
+							<h:outputText value="Novo Trabalho" rendered="#{empty trabalhoController.trabalho.id}" />
+							<h:outputText value="Editar Trabalho" rendered="#{not empty trabalhoController.trabalho.id}" />
+						</h2>
+						<fieldset>
+							<legend>Dados do Trabalho</legend>
+							<h:inputHidden value="#{trabalhoController.trabalho.id}" />
+							<h:panelGrid columns="2" cellpadding="5">
+
+								<h:outputLabel value="Titulo: " for="titulo" />
+								<h:inputText id="titulo" value="#{trabalhoController.trabalho.titulo}">
+									<f:validator validatorId="comecaComMaiuscula" />
+								</h:inputText>
+
+								<h:outputLabel value="Ano: " for="ano" />
+								<p:selectOneMenu id="ano" value="#{trabalhoController.selectedAno}" style="width:150px">
+									<f:selectItem itemLabel="Selecione o ano" itemValue="" noSelectionOption="true" />
+									<f:selectItems value="#{trabalhoController.anos}" />
+								</p:selectOneMenu>
+
+								<h:outputLabel value="Curso: " for="curso" />
+								<p:selectOneMenu id="curso" value="#{trabalhoController.selectedCurso}" style="width:150px">
+									<f:selectItem itemLabel="Selecione o curso" itemValue="" noSelectionOption="true" />
+									<f:selectItems value="#{trabalhoController.cursos}" />
+								</p:selectOneMenu>
+
+								<h:outputLabel value="Resumo: " for="resumo" />
+								<h:inputTextarea id="resumo" value="#{trabalhoController.trabalho.resumo}" />
+
+								<h:outputLabel value="Orientador: " for="orientador" />
+								<p:selectOneMenu id="orientador" value="#{trabalhoController.selectedOrientador}" style="width:150px">
+									<f:selectItem itemLabel="Selecione o orientador" itemValue="" noSelectionOption="true" />
+									<f:selectItems value="#{trabalhoController.professores}" />
+								</p:selectOneMenu>
+
+								<h:outputLabel value="Aluno 1: " for="aluno_1" />
+								<p:selectOneMenu id="aluno_1" value="#{trabalhoController.selectedAluno_1}" style="width:150px">
+									<f:selectItem itemLabel="Selecione o primeiro aluno, autor do trabalho" itemValue="" noSelectionOption="true" />
+									<f:selectItems value="#{trabalhoController.alunos}" />
+								</p:selectOneMenu>
+
+								<h:outputLabel value="Aluno 2: " for="aluno_2" />
+								<p:selectOneMenu id="aluno_2" value="#{trabalhoController.selectedAluno_2}" style="width:150px">
+									<f:selectItem itemLabel="Selecione o segundo aluno, autor do trabalho" itemValue="" noSelectionOption="true" />
+									<f:selectItems value="#{trabalhoController.alunos}" />
+								</p:selectOneMenu>
+
+								<h:outputLabel value="Aluno 3: " for="aluno_3" />
+								<p:selectOneMenu id="aluno_3" value="#{trabalhoController.selectedAluno_3}" style="width:150px">
+									<f:selectItem itemLabel="Selecione o terceiro aluno, autor do trabalho" itemValue="" noSelectionOption="true" />
+									<f:selectItems value="#{trabalhoController.alunos}" />
+								</p:selectOneMenu>
+
+								<h:outputLabel value="Aluno 4: " for="aluno_4" />
+								<p:selectOneMenu id="aluno_4" value="#{trabalhoController.selectedAluno_4}" style="width:150px">
+									<f:selectItem itemLabel="Selecione o quarto aluno, autor do trabalho" itemValue="" noSelectionOption="true" />
+									<f:selectItems value="#{trabalhoController.alunos}" />
+								</p:selectOneMenu>
+
+								<h:outputLabel value="Aluno 5: " for="aluno_5" />
+								<p:selectOneMenu id="aluno_5" value="#{trabalhoController.selectedAluno_5}" style="width:150px">
+									<f:selectItem itemLabel="Selecione o quinto aluno, autor do trabalho" itemValue="" noSelectionOption="true" />
+									<f:selectItems value="#{trabalhoController.alunos}" />
+								</p:selectOneMenu>
+
+								<h:outputLabel value="Arquivo: " for="arquivo" />
+								<p:fileUpload id="arquivo" value="#{trabalhoController.file}" mode="simple" skinSimple="true" />
+							</h:panelGrid>
+							<h:commandButton value="Gravar" action="#{trabalhoController.grava}" />
+
+							<h:commandButton value="Cancela Edicao" action="#{trabalhoController.cancela}" immediate="true" />
+						</fieldset>
+					</h:messages>
+				</h:form>
+			</p:tab>
+			<p:tab title="Listagem">
+				<h:form>
+					<h2>Listagem de Trabalhos</h2>
+
+					<h:dataTable value="#{trabalhoController.trabalhos}" var="trabalho" styleClass="dados" rowClasses="impar,par">
+
+						<h:column>
+							<f:facet name="header">Titulo</f:facet>
+							#{trabalho.titulo}
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Ano</f:facet>
+							#{trabalho.ano}
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Curso</f:facet>
+							#{trabalho.curso}
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Orientador</f:facet>
+							#{trabalho.orientador}
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Autores</f:facet>
+							#{trabalho.autores}
+						</h:column>
+
+						<h:column>
+							<p:commandButton value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s">
+								<p:fileDownload value="#{trabalhoController.downloadFile(trabalho)}" />
+							</p:commandButton>
+						</h:column>
+
+						<script type="text/javascript">
+							function start() {
+							    PF('statusDialog').show();
+							}
+							 
+							function stop() {
+							    PF('statusDialog').hide();
+							}
+						</script>
+
+						<h:column>
+							<f:facet name="header">Acoes</f:facet>
+							<h:commandLink action="#{trabalhoController.remove(trabalho)}" value="Remover">
+								<f:ajax execute="@form" />
+							</h:commandLink>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Acoes</f:facet>
+							<h:commandLink value="Alterar">
+								<f:setPropertyActionListener value="#{trabalho}" target="#{trabalhoController.trabalho}">
+								</f:setPropertyActionListener>
+							</h:commandLink>
+						</h:column>
+
+					</h:dataTable>
+				</h:form>
+			</p:tab>
+		</p:tabView>
+
+	</ui:define>
+</ui:composition>
+</html>

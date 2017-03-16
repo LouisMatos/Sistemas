@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/_template.xhtml">
+
+	<ui:define name="corpo">
+		<h:form id="reg">
+			<h2>Menu</h2>
+			<h:commandLink id="Aluno" action="aluno.jsf" value="Aluno" />
+			<br />
+			<h:commandLink id="Curso" action="curso.jsf" value="Curso" />
+			<br />
+			<h:commandLink id="Professor" action="professor.jsf" value="Professor" />
+			<br />
+			<h:commandLink id="Usuario" action="usuario.jsf" value="Usuario" />
+			<br />
+			<h:commandLink id="Trabalho" action="trabalho.jsf" value="Trabalho" />
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

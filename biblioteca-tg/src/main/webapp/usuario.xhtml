@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/_template.xhtml">
+	<ui:define name="corpo">
+		<p:tabView>
+			<p:tab title="#{usuarioController.tituloAba1}">
+				<h:form>
+					<h:messages styleClass="erros">
+						<h2>
+							<h:outputText value="Novo Usuario" rendered="#{empty usuarioController.usuario.id}" />
+							<h:outputText value="Editar Usuario" rendered="#{not empty usuarioController.usuario.id}" />
+						</h2>
+						<fieldset>
+							<legend>Dados do Usuario</legend>
+
+							<h:inputHidden value="#{usuarioController.usuario.id}" />
+
+							<h:outputLabel for="email" value="Email:" />
+							<h:inputText id="email" value="#{usuarioController.usuario.email}" />
+
+							<h:outputLabel for="senha" value="Senha:" />
+							<h:inputSecret id="senha" value="#{usuarioController.usuario.senha}" />
+
+							<h:outputLabel for="confirma_senha_cadastro" value="Confirma a Senha:" />
+							<h:inputSecret id="confirma_senha_cadastro" value="#{usuarioComumController.usuario.confirmacaoSenha}" />
+
+							<h:outputLabel value="Tipo Usuario: " for="tipo_usuario" />
+							<h:selectOneMenu id="tipo_usuario" value="#{usuarioController.usuario.tipoUsuario}">
+								<f:selectItems value="#{usuarioController.tipoUsuarioValues}" />
+							</h:selectOneMenu>
+
+							<h:commandButton value="Gravar" action="#{usuarioController.grava}" />
+
+							<h:commandButton value="Cancela Edicao" action="#{usuarioController.cancela}" immediate="true" />
+
+						</fieldset>
+					</h:messages>
+				</h:form>
+			</p:tab>
+			<p:tab title="Listagem">
+				<h:form>
+					<h2>Listagem de Usuarios</h2>
+
+					<h:dataTable value="#{usuarioController.usuarios}" var="usuario" styleClass="dados" rowClasses="impar,par">
+
+						<h:column>
+							<f:facet name="header">Email</f:facet>
+							#{usuario.email}
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Tipo Usuario</f:facet>
+							#{usuario.tipoUsuario}
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Acoes</f:facet>
+							<h:commandLink action="#{usuarioController.remove(usuario)}" value="Remover">
+								<f:ajax execute="@form" />
+							</h:commandLink>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Acoes</f:facet>
+							<h:commandLink value="Alterar">
+								<f:setPropertyActionListener value="#{usuario}" target="#{usuarioController.usuario}">
+								</f:setPropertyActionListener>
+							</h:commandLink>
+						</h:column>
+
+					</h:dataTable>
+				</h:form>
+			</p:tab>
+		</p:tabView>
+
+	</ui:define>
+</ui:composition>
+</html>

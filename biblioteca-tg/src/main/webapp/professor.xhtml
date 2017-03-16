@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/_template.xhtml">
+	<ui:define name="corpo">
+		<p:tabView>
+			<p:tab title="#{professorController.tituloAba1}">
+				<h:form>
+					<h:messages styleClass="erros">
+						<h2>
+							<h:outputText value="Novo Professor"
+								rendered="#{empty professorController.professor.id}" />
+							<h:outputText value="Editar Professor"
+								rendered="#{not empty professorController.professor.id}" />
+						</h2>
+						<fieldset>
+							<legend>Dados do Professor</legend>
+
+							<h:inputHidden value="#{professorController.professor.id}" />
+
+							<h:outputLabel value="Nome: " for="nome" />
+							<h:inputText id="nome" value="#{professorController.professor.nome}">
+								<f:validator validatorId="comecaComMaiuscula" />
+							</h:inputText>
+
+							<h:outputLabel value="Registro: " for="registro" />
+							<h:inputText id="registro"
+								value="#{professorController.professor.registro}" />
+
+							<h:commandButton value="Gravar" action="#{professorController.grava}" />
+
+							<h:commandButton value="Cancela Edicao"
+								action="#{professorController.cancela}" immediate="true" />
+
+						</fieldset>
+					</h:messages>
+				</h:form>
+			</p:tab>
+			<p:tab title="Listagem">
+				<h:form>
+					<h2>Listagem de Professores</h2>
+
+					<h:dataTable value="#{professorController.professores}" var="professor"
+						styleClass="dados" rowClasses="impar,par">
+
+						<h:column>
+							<f:facet name="header">Nome</f:facet>
+							#{professor.nome}
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Registro</f:facet>
+							#{professor.registro}
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Acoes</f:facet>
+							<h:commandLink action="#{professorController.remove(professor)}"
+								value="Remover">
+								<f:ajax execute="@form" />
+							</h:commandLink>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Acoes</f:facet>
+							<h:commandLink value="Alterar">
+								<f:setPropertyActionListener value="#{professor}"
+									target="#{professorController.professor}">
+								</f:setPropertyActionListener>
+							</h:commandLink>
+						</h:column>
+
+					</h:dataTable>
+				</h:form>
+			</p:tab>
+		</p:tabView>
+
+	</ui:define>
+</ui:composition>
+</html>

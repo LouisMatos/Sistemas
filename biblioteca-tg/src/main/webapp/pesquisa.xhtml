@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/_template.xhtml">
+	<ui:define name="corpo">
+		<h:form>
+			<h2>Listagem de Trabalhos</h2>
+
+			<h:dataTable value="#{trabalhoController.trabalhos}" var="trabalho" styleClass="dados" rowClasses="impar,par">
+
+				<h:column>
+					<f:facet name="header">Titulo</f:facet>
+							#{trabalho.titulo}
+						</h:column>
+
+				<h:column>
+					<f:facet name="header">Ano</f:facet>
+							#{trabalho.ano}
+						</h:column>
+
+				<h:column>
+					<f:facet name="header">Curso</f:facet>
+							#{trabalho.curso}
+						</h:column>
+
+				<h:column>
+					<f:facet name="header">Orientador</f:facet>
+							#{trabalho.orientador}
+						</h:column>
+
+				<h:column>
+					<f:facet name="header">Autores</f:facet>
+							#{trabalho.autores}
+						</h:column>
+
+				<h:column>
+					<p:commandButton value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s">
+						<p:fileDownload value="#{trabalhoController.downloadFile(trabalho)}" />
+					</p:commandButton>
+				</h:column>
+
+				<script type="text/javascript">
+					function start() {
+					    PF('statusDialog').show();
+					}
+						 
+					function stop() {
+					    PF('statusDialog').hide();
+					}
+				</script>
+
+			</h:dataTable>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

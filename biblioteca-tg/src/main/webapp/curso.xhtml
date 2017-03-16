@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/_template.xhtml">
+	<ui:define name="corpo">
+		<p:tabView>
+			<p:tab title="#{cursoController.tituloAba1}">
+				<h:form>
+					<h:messages styleClass="erros">
+						<h2>
+							<h:outputText value="Novo Curso" rendered="#{empty cursoController.curso.id}" />
+							<h:outputText value="Editar Curso" rendered="#{not empty cursoController.curso.id}" />
+						</h2>
+						<fieldset>
+							<legend>Dados do Curso</legend>
+
+							<h:inputHidden value="#{cursoController.curso.id}" />
+
+							<h:outputLabel value="Nome: " for="nome" />
+							<h:inputText id="nome" value="#{cursoController.curso.nome}">
+								<f:validator validatorId="comecaComMaiuscula" />
+							</h:inputText>
+
+							<h:outputLabel value="Sigla: " for="sigla" />
+							<h:inputText id="sigla" value="#{cursoController.curso.sigla}" />
+
+							<h:outputLabel value="Periodo: " for="periodo" />
+							<h:selectOneMenu id="periodo" value="#{cursoController.curso.periodo}">
+								<f:selectItems value="#{cursoController.periodoValues}" />
+							</h:selectOneMenu>
+
+							<h:commandButton value="Gravar" action="#{cursoController.grava}" />
+
+							<h:commandButton value="Cancela Edicao" action="#{cursoController.cancela}" immediate="true" />
+
+						</fieldset>
+					</h:messages>
+				</h:form>
+			</p:tab>
+			<p:tab title="Listagem">
+				<h:form>
+					<h2>Listagem de Cursos</h2>
+
+					<h:dataTable value="#{cursoController.cursos}" var="curso" styleClass="dados" rowClasses="impar,par">
+
+						<h:column>
+							<f:facet name="header">Nome</f:facet>
+							#{curso.nome}
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Sigla</f:facet>
+							#{curso.sigla}
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Periodo</f:facet>
+							#{curso.periodo}
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Acoes</f:facet>
+							<h:commandLink action="#{cursoController.remove(curso)}" value="Remover">
+								<f:ajax execute="@form" />
+							</h:commandLink>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Acoes</f:facet>
+							<h:commandLink value="Alterar">
+								<f:setPropertyActionListener value="#{curso}" target="#{cursoController.curso}">
+								</f:setPropertyActionListener>
+							</h:commandLink>
+						</h:column>
+
+					</h:dataTable>
+				</h:form>
+			</p:tab>
+		</p:tabView>
+
+	</ui:define>
+</ui:composition>
+</html>

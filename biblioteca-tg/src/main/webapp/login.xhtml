@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/_template.xhtml">
+	<ui:define name="corpo">
+		<p:tabView>
+			<p:tab title="Login no sistema">
+				<h:form id="formlogin">
+					<fieldset>
+						<h:panelGrid columns="2" styleClass="campos">
+
+							<h:outputLabel value="Email: " for="email" />
+							<h:inputText id="email" value="#{loginController.usuario.email}" />
+
+							<h:outputLabel value="Senha: " for="senha" />
+							<h:inputSecret id="senha" value="#{loginController.usuario.senha}" />
+
+							<f:ajax execute="@form">
+								<h:commandButton value="Efetuar Login" action="#{loginController.efetuaLogin}" />
+							</f:ajax>
+						</h:panelGrid>
+					</fieldset>
+				</h:form>
+			</p:tab>
+			<p:tab title="Novo Usuario">
+				<h:form>
+					<h:messages styleClass="erros">
+						<fieldset>
+							<h:panelGrid columns="2" styleClass="campos">
+								<h:outputLabel for="email_cadastro" value="Email:" />
+								<h:inputText id="email_cadastro" value="#{usuarioComumController.usuario.email}" />
+
+								<h:outputLabel for="senha_cadastro" value="Senha:" />
+								<h:inputSecret id="senha_cadastro" value="#{usuarioComumController.usuario.senha}" />
+
+								<h:outputLabel for="confirma_senha_cadastro" value="Confirma a Senha:" />
+								<h:inputSecret id="confirma_senha_cadastro" value="#{usuarioComumController.usuario.confirmacaoSenha}" />
+
+								<h:commandButton value="Gravar" action="#{usuarioComumController.grava}" disabled="" />
+
+								<h:commandButton value="Cancela Edicao" action="#{usuarioComumController.cancela}" immediate="true" />
+							</h:panelGrid>
+						</fieldset>
+					</h:messages>
+				</h:form>
+			</p:tab>
+		</p:tabView>
+	</ui:define>
+</ui:composition>
+
+</html>
