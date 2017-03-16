@@ -3,16 +3,14 @@ package org.fatec.controller;
 import java.io.Serializable;
 
 import javax.enterprise.event.Event;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 
 import org.fatec.dao.UsuarioDao;
 import org.fatec.model.TipoUsuario;
 import org.fatec.model.Usuario;
 
-@ManagedBean
-@SessionScoped
+@Model
 public class LoginController implements Serializable {
 
 	private static final long serialVersionUID = -4711066483117858009L;
@@ -37,8 +35,7 @@ public class LoginController implements Serializable {
 			if (usuario.getTipoUsuario() == TipoUsuario.ADMINISTRADOR) {
 				return "aluno?faces-redirect=true";
 			} else {
-				//return "pesquisa?faces-redirect=true";
-				return "aluno?faces-redirect=true";
+				return "pesquisa?faces-redirect=true";
 			}
 		} else {
 			usuarioLogadoController.deslogar();

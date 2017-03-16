@@ -56,8 +56,7 @@ public class UsuarioDao {
 				.setParameter("pEmail", usuario.getEmail()).setParameter("pSenha", usuario.getSenha());
 
 		boolean encontrado = !query.getResultList().isEmpty();
-		logger.info("Existe usuario " + encontrado + "? " + encontrado);
-		logger.info(usuario.getSenha());
+		logger.info("Existe usuario " + usuario + "? " + encontrado);
 
 		return encontrado;
 	}

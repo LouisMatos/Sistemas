@@ -2,9 +2,8 @@ package org.fatec.controller;
 
 import java.util.List;
 
+import javax.enterprise.inject.Model;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
@@ -14,8 +13,7 @@ import org.fatec.model.TipoUsuario;
 import org.fatec.model.Usuario;
 import org.slf4j.Logger;
 
-@ManagedBean
-@SessionScoped
+@Model
 public class UsuarioController {
 
 	@Inject
