@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+	
+	</h:head> 
+	<body>
+		<ui:include src="../topmenu.xhtml"></ui:include>
+		<h:form  id="form_curso" role="form" style="display: block;">
+		
+			<div class="container">
+				<div class="col-sm-12">
+					<h2>Cadastro de Curso</h2>
+					<hr/>
+				</div>
+				
+				<div class="col-sm-3"></div>
+				
+				<div class="col-sm-6">
+					<div class="panel panel-default">
+				      <div class="panel-heading"><h4>Novo Curso</h4></div>
+				      <div class="panel-body">
+				      	<!-- Text input-->
+						<div class="control-group">
+						  <label class="control-label" for="textinput">Nome:</label>
+						  <div class="controls">
+						  	<h:inputText id="nome_curso" name="nome_curso" placeholder="" class="form-control" value="#{cursoController.curso.nome}" onkeypress="mascara(this,soLetras);" maxlength="80"/>
+						  </div>
+						</div>
+						
+						<!-- Text input-->
+						<div class="control-group">
+						  <label class="control-label" for="textinput">Siga:</label>
+						  <div class="controls">
+						  	<h:inputText id="sigla_curso" name="sigla_curso" placeholder="" class="form-control" value="#{cursoController.curso.sigla}" onkeypress="mascara(this,soNumeros);" maxlength="13"/>					    
+						  </div>
+						</div>
+						
+						<!-- Text input-->
+						<div class="control-group">
+						  <label class="control-label" for="textinput">Periodo:</label>
+						  <div class="controls">
+						  	<h:inputText id="periodo_curso" name="periodo_curso" placeholder="" class="form-control" value="#{cursoController.curso.periodo}" onkeypress="mascara(this,soNumeros);" maxlength="13"/>					    
+						  </div>
+						</div>
+						
+						
+						<h:message for="cadCurso" id="cadCurso" showDetail="true"/>
+						
+						<!-- Button (Double) -->
+						<div class="control-group" align="right">
+						  <label class="control-label" for="button1id"></label>
+						  <div class="controls">
+						  	<h:commandButton value="Cadastrar"  class="btn btn-default" >
+						  		<f:ajax  execute="@form" render="cadCurso" listener="#{cursoController.cadastrarCurso}"  onevent="limpaCampos" />
+							</h:commandButton>
+						  	
+						  	<h:commandButton value="Cancelar"  class="btn btn-default"  >
+						  		<f:ajax execute="@form"  render="cadCurso" listener="#{cursoController.cancelar}" />
+							</h:commandButton>
+						  	
+						  	
+						  	
+						  </div>
+						</div>
+				      	
+				      </div>
+				    </div>
+				</div>
+				
+				<div class="col-sm-3"></div>
+				
+			</div>
+    
+     	</h:form>
+	</body> 
+</html>
