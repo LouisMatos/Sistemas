@@ -52,8 +52,7 @@
 						<td style="text-align: left;">#{o.nome}</td>
 						<td style="text-align: center;">#{o.registro}</td>
 						<td style="text-align: center;">
-							<a href="#" class="btn btn-default" data-toggle="modal" data-target="#delete-modal">Excluir</a>
-							<h:commandButton value="Atualizar" class="btn btn-warning" action="#{alunoController.atualizarAluno}" ></h:commandButton>
+							<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#delete-modal">Atualizar</a>
 						</td>
 						<td style="text-align: center;">
 							<h:commandButton onclick="if (! confirm('Deseja realmente Excluir esse aluno?')) return false"
@@ -67,23 +66,24 @@
 			</table>
 			
 							<!-- Modal -->
-<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">teste</span></button>
-        <h4 class="modal-title" id="modalLabel">Excluir Item</h4>
-      </div>
-      <div class="modal-body">
-        Deseja realmente excluir este item?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Sim</button>
- <button type="button" class="btn btn-default" data-dismiss="modal">teste</button>
-      </div>
-    </div>
-  </div>
-</div> <!-- /.modal -->
+			<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">teste</span></button>
+			        <h4 class="modal-title" id="modalLabel">Excluir Item</h4>
+			      </div>
+			      <div class="modal-body">
+			        Deseja realmente excluir este item?
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-primary">Sim</button>
+			 		<button type="button" class="btn btn-default" data-dismiss="modal">teste</button>
+			 		<h:commandButton class="btn btn-default" data-dismiss="modal" value="update"></h:commandButton>
+			      </div>
+			    </div>
+			  </div>
+			</div> <!-- /.modal -->
 			
 			
 			
