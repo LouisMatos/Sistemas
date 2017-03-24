@@ -27,7 +27,7 @@ public class AlunoController {
 	
 	private FacesContext facesContext;
 
-	private ArrayList<Aluno> alunos = new ArrayList<Aluno>();;
+	private ArrayList<Aluno> alunos = new ArrayList<Aluno>();
 
 	private int idt;
 	
