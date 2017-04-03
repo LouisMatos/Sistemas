@@ -30,7 +30,7 @@ public class Curso implements Serializable{
 	private String sigla;
 	
 	@Column
-	private TipoPeriodo periodo;
+	private String periodo;
 	
 	public Curso(){
 		super();
@@ -60,11 +60,11 @@ public class Curso implements Serializable{
 		this.sigla = sigla;
 	}
 
-	public TipoPeriodo getPeriodo() {
+	public String getPeriodo() {
 		return periodo;
 	}
 
-	public void setPeriodo(TipoPeriodo periodo) {
+	public void setPeriodo(String periodo) {
 		this.periodo = periodo;
 	}
 

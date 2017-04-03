@@ -57,8 +57,8 @@
 						<td style="text-align: center;">
 							<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#delete-modal">Atualizar</a>
 						</td>
-						<td style="text-align: center;">
-							<h:commandButton onclick="if (! confirm('Deseja realmente Excluir esse aluno?')) return false"
+						<td style="text-align: center;"> 
+							<h:commandButton onclick="if (! confirm('Deseja realmente Excluir esse Curso?')) return false"
 								value="Excluir" action="#{cursoController.excluirCurso}"  class="btn btn-danger" >
 								   <f:setPropertyActionListener target="#{cursoController.idt}" value="#{o.id}" />
 							</h:commandButton>

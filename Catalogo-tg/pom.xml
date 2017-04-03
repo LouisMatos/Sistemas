@@ -53,11 +53,13 @@
     </dependency>
  
     <!-- DEPENDENCIA MYSQL -->
-    <dependency>
-	<groupId>mysql</groupId>
-	<artifactId>mysql-connector-java</artifactId>
-	<version>5.1.37</version>
-    </dependency>
+   	<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+	<dependency>
+	    <groupId>mysql</groupId>
+	    <artifactId>mysql-connector-java</artifactId>
+	    <version>5.1.41</version>
+	</dependency>
+
     
      <!-- Métodos uteis para manipulação de String, métodos e etc-->
     <dependency>

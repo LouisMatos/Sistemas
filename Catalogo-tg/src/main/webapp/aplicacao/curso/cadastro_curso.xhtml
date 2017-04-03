@@ -6,7 +6,7 @@
     xmlns:p="http://primefaces.org/ui">
 
 	<h:head>
-	
+		<script src="#{request.contextPath}/js/curso.js"></script>
 	</h:head> 
 	<body>
 		<ui:include src="../topmenu.xhtml"></ui:include>
@@ -43,9 +43,18 @@
 						<!-- Text input-->
 						<div class="control-group">
 						  <label class="control-label" for="textinput">Periodo:</label>
-						  <div class="controls">
+						  
+						  <h:selectOneMenu id="periodo_curso" name="periodo_curso" class="form-control" value="#{cursoController.curso.periodo}">
+						 	<f:selectItem itemValue="0" itemLabel="* Selecione" />
+						   	<f:selectItem itemValue="1" itemLabel="Manhã" />
+						   	<f:selectItem itemValue="2" itemLabel="Tarde" />
+						   	<f:selectItem itemValue="3" itemLabel="Noite" />
+						  </h:selectOneMenu>
+						  
+						 <!-- <div class="controls">
 						  	<h:inputText id="periodo_curso" name="periodo_curso" placeholder="" class="form-control" value="#{cursoController.curso.periodo}"  maxlength="13"/>					    
 						  </div>
+						-->
 						</div>
 						
 						
@@ -56,9 +65,9 @@
 						  <label class="control-label" for="button1id"></label>
 						  <div class="controls">
 						  	<h:commandButton value="Cadastrar"  class="btn btn-default" >
-						  		<f:ajax  execute="@form" render="cadCurso" listener="#{cursoController.cadastrarCurso}"  onevent="limpaCampos" />
+						  		<f:ajax  execute="@form" render="cadCurso" listener="#{cursoController.cadastrarCurso}"  />
 							</h:commandButton>
-						  	
+						  	 
 						  	<h:commandButton value="Cancelar"  class="btn btn-default"  >
 						  		<f:ajax execute="@form"  render="cadCurso" listener="#{cursoController.cancelar}" />
 							</h:commandButton>
