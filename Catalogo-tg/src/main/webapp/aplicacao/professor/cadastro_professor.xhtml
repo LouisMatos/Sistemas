@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+    
+    <h:head>
+    
+    </h:head>
+    <h:body>
+    <ui:include src="../topmenu.xhtml"></ui:include>
+	<ui:include src="../footer.xhtml"></ui:include>
+    	<h:form id="myForm">
+			<a class="btn btn-danger"
+				 jsfc="h:commandLink"
+				 type="button"
+				 action="#{pesquisaSubgrupoBean.setSubgrupoSelecionado(subgrupo)}"
+				 immediate="true">
+				 <f:setPropertyActionListener
+				 value="#{subgrupo}"
+				 target="#{pesquisaSubgrupoBean.subgrupoSelecionado}"/>
+				  
+				 <f:passThroughAttribute name="data-toggle" value="modal" />
+				 <f:passThroughAttribute name="data-target" value="#myModal" />
+				 <f:ajax/>
+				 
+				 <i class="icon_close_alt2"></i>
+				</a>
+    	</h:form>
+    
+    </h:body>
+</html>

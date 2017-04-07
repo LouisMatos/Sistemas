@@ -16,6 +16,7 @@
 	</h:head>
 	<h:body>
 	<ui:include src="../topmenu.xhtml"></ui:include>
+	<ui:include src="../footer.xhtml"></ui:include>
 	<f:event listener="#{cursoController.init()}" type="preRenderView" /> 
 	<h:form id="teste" >
 		<div class="container">
@@ -51,7 +52,7 @@
 				<ui:repeat var="o" value="#{cursoController.cursos}" varStatus="status">
 					<tr>
 						<td style="text-align: center;">#{o.id}</td>
-						<td style="text-align: left;">#{o.nome}</td>
+						<td style="text-align: center;">#{o.nome}</td>
 						<td style="text-align: center;">#{o.periodo}</td>
 						<td style="text-align: center;">#{o.sigla}</td>
 						<td style="text-align: center;">

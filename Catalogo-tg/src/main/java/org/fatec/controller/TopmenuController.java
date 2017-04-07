@@ -33,4 +33,13 @@ public class TopmenuController {
 		FacesContext.getCurrentInstance().getExternalContext().redirect(context.getRequestContextPath() + "/aplicacao/curso/listar_curso.xhtml");
 	}
 	
+	public void cadastrarProfessor() throws IOException{
+		context = FacesContext.getCurrentInstance().getExternalContext();
+		FacesContext.getCurrentInstance().getExternalContext().redirect(context.getRequestContextPath() + "/aplicacao/professor/cadastro_professor.xhtml");
+	}
+	
+	public void listarProfessores() throws IOException{
+		context = FacesContext.getCurrentInstance().getExternalContext();
+		FacesContext.getCurrentInstance().getExternalContext().redirect(context.getRequestContextPath() + "/aplicacao/professor/listar_professor.xhtml");
+	}
 }

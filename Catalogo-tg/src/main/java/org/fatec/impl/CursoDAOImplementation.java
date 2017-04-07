@@ -45,10 +45,10 @@ public class CursoDAOImplementation extends GenericDAOImplementation<Curso>{
 			entityManager.getTransaction().begin();
 		}
 		
-		Query query = entityManager.createQuery("select u from Curso u where u.nome = :pNome ").setParameter("pNome", curso.getNome());
+		Query query = entityManager.createQuery("select u from Curso u where u.sigla = :pSigla ").setParameter("pSigla", curso.getSigla());
 		
 		encontrado = !query.getResultList().isEmpty();
-		System.out.println("Existe curso " + curso.getNome() + "? " + encontrado);
+		System.out.println("Existe curso " + curso.getSigla() + "? " + encontrado);
 		entityManager.flush();
 		entityManager.getTransaction().commit();
 		
