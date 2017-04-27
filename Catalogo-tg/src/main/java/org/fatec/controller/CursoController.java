@@ -48,8 +48,7 @@ public class CursoController {
 	
 	public void excluirCurso(){
 		try{
-			System.out.println(getIdt());
-			//dao.excluiCuros(getIdt());
+			dao.excluiCuro(getIdt());
 		}catch(Exception e){
 			e.printStackTrace();
 		}

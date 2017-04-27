@@ -47,7 +47,7 @@
 					  <label class="control-label" for="button1id"></label>
 					  <div class="controls">
 					  	<h:commandButton value="Cadastrar"  class="btn btn-default" >
-					  		<f:ajax  execute="@form" render="cadAluno" listener="#{alunoController.cadastrarAluno}"  onevent="limpaCampos" />
+					  		<f:ajax  execute="@form" render="cadAluno" listener="#{alunoController.cadastrarAluno}"  onevent="validarCampos"  />
 						</h:commandButton>
 					  	
 					  	<h:commandButton value="Cancelar"  class="btn btn-default"  >

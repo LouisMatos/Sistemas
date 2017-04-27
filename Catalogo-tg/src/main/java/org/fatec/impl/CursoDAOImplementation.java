@@ -25,7 +25,7 @@ public class CursoDAOImplementation extends GenericDAOImplementation<Curso>{
 		
 	}
 
-	public void excluiCuros(int id) {
+	public void excluiCuro(int id) {
 		if(!entityManager.getTransaction().isActive()){
 			entityManager.getTransaction().begin();
 		}
