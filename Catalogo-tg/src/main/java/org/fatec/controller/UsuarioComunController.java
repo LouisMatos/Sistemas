@@ -48,7 +48,7 @@ public class UsuarioComunController implements Serializable{
 					dao.save(usuario);
 				} else {
 					facesContext = FacesContext.getCurrentInstance();
-					FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ocorreu um problema, tente novamente!", "E-mail j· cadastrado! Tente novamente!");
+					FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ocorreu um problema, tente novamente!", "E-mail jÔøΩ cadastrado! Tente novamente!");
 		            facesContext.addMessage("register-form:validaUsuario", message);
 		            
 					//return "/login.xhtml?faces-redirect=false";
@@ -59,7 +59,7 @@ public class UsuarioComunController implements Serializable{
 		       
 		        /*}else{
 				facesContext = FacesContext.getCurrentInstance();
-	            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Senhas n„o batem...", "As senhas informadas n„o s„o iguais! Tente novamente");
+	            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Senhas n√£o batem...", "As senhas informadas n√£o s√£o iguais! Tente novamente");
 	            facesContext.addMessage("register-form:validaUsuario", message);
 	            
 	            System.out.println("4");

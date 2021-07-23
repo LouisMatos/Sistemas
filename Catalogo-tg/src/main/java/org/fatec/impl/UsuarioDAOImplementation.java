@@ -1,8 +1,5 @@
 package org.fatec.impl;
 
-import java.util.List;
-
-import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import org.fatec.dao.UsuarioDAO;
@@ -57,7 +54,7 @@ public class UsuarioDAOImplementation extends GenericDAOImplementation<Usuario> 
 		
 		
 		
-		//System.out.println("Existe Usu·rio " + usuario.getEmail() + "? " + encontrado);
+		//System.out.println("Existe Usu√°rio " + usuario.getEmail() + "? " + encontrado);
 		entityManager.flush();
 		entityManager.getTransaction().commit();
 		return usu;

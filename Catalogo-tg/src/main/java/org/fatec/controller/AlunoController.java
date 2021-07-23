@@ -1,21 +1,14 @@
 package org.fatec.controller;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.persistence.PostLoad;
-import javax.servlet.http.HttpSessionEvent;
 
 import org.fatec.impl.AlunoDAOImplementation;
 import org.fatec.model.Aluno;
-import org.fatec.session.SessionContext;
-import org.hibernate.jpa.internal.schemagen.GenerationSourceFromScript;
 
 @ManagedBean
 @SessionScoped
@@ -47,7 +40,7 @@ public class AlunoController {
 				aluno = new Aluno();
 			}else{
 				facesContext = FacesContext.getCurrentInstance();
-				FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ocorreu um problema, tente novamente!", "Registro j· cadastrado! Tente novamente!");
+				FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ocorreu um problema, tente novamente!", "Registro j√° cadastrado! Tente novamente!");
 				facesContext.addMessage("form_aluno:cadAluno", message);
 			}
 			facesContext = FacesContext.getCurrentInstance();

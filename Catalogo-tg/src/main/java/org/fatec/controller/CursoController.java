@@ -9,7 +9,6 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import org.fatec.impl.CursoDAOImplementation;
-import org.fatec.model.Aluno;
 import org.fatec.model.Curso;
 
 @ManagedBean
@@ -38,7 +37,7 @@ public class CursoController {
 				facesContext.addMessage("form_curso:cadCurso", message);
 			}else{
 				facesContext = FacesContext.getCurrentInstance();
-				FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ocorreu um problema, tente novamente!", "Curso já cadastrado! Tente novamente!");
+				FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ocorreu um problema, tente novamente!", "Curso jÃ¡ cadastrado! Tente novamente!");
 				facesContext.addMessage("form_curso:cadCurso", message);
 			}
 		}catch(Exception e){
@@ -62,7 +61,7 @@ public class CursoController {
 			   Curso c = iterator.next();
 			  
 			   if(c.getPeriodo().equals("1")){
-				   c.setPeriodo("Manhã");
+				   c.setPeriodo("Manhï¿½");
 			   }else if(c.getPeriodo().equals("2")){
 				   c.setPeriodo("Tarde");
 			   }else if(c.getPeriodo().equals("3")){
